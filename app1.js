@@ -4,14 +4,14 @@ const path = require('path');
 //const bodyParser = require('body-parser');
 //const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./config/default');
+const config = require('./config/config');
 const router = require('./router');
 
 const app = express();
 
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise
-mongoose.connect(config.database, { useMongoClient: true });
+mongoose.connect(, { useMongoClient: true });
 
 app.listen(3000);
 
