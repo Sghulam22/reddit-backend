@@ -1,0 +1,30 @@
+{topics:
+  {topicUUIDhere:
+    {title: "Game of Thrones Fan Fic",
+     image: "https://fillmurray.com/300/300",
+     blurb: "Ship away mega fans, ship away.",
+     link: "https://google.com?q=shipping+GoT"
+    }
+  }
+},
+{comments:
+  {topicUUIDhere:
+    {comment1UUID:
+      {author: userUUID,
+       authorName: authorDisplayName,
+       blurb: "Varys and Everyone!",
+       votes: {
+         voterUUID1: 1,
+         voterUUID2: 1
+       },
+       subcomments:
+         {subcomment1UUID:
+           {author: user2UUID,
+            authorName: authorDisplayName,
+            blurb: "Eww",
+            votes:
+             {voterUUID1: -1,
+              voterUUID2: -1
+             }
+           }
+         }}}}}}
