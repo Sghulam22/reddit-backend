@@ -4,7 +4,7 @@ const path = require('path');
 //const bodyParser = require('body-parser');
 //const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./config/config');
+const config = require('./config/default');
 const router = require('./router');
 
 const app = express();
