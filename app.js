@@ -2,6 +2,9 @@ const express  = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const config = require('./config/config');
+const parser = require('body-parser');
+
+app.use(parser.json());
 
 //middle wear
 app.use('/',()=>{
