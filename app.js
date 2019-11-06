@@ -1,46 +1,75 @@
-const express  = require('express');
-const app = express();
+// const express  = require('express');
+// const app = express();
+// const mongoose = require('mongoose');
+// const config = require('./config/config');
+// const parser = require('body-parser');
+
+// const router = require('./router');
+// app.listen(3000);
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const assert = require('assert');
+// MongoClient.Promise = global.Promise
+// // Connection URL
+// const url = 'mongodb://localhost:27017';
+
+// // Database Name
+// const dbName = 'myproject';
+
+// // Use connect method to connect to the server
+// MongoClient.connect(url, function(err, client) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server");
+
+//   const db = client.db(dbName);
+
+//   client.close();
+// });
+
+
+// app.use(parser.json()); 
+
+// //middle wear
+//  app.use('/posts',post_route);
+// //  app.use(app.router);
+// //  post_route.initialize(app);
+// // app.use('/comments',comments_route);
+
+
+
+
+// We will declare all our dependencies here
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/config');
-const parser = require('body-parser');
-const post_route= require('./routers/posts');
-app.use(parser.json()); 
+const router = require('./router');
+const app = express();
 
-//middle wear
-app.use('/posts',post_route);
-
-
-//listen to server
-app.listen(3000);
-
-//routes
-app.get('/',(req,res)=>
-{
-    res.send ('we are in home');
-});
-
-app.get('/posts',(req,res) => {
-    res.send ('we are in post');
-});
+//middlewares
+app.use(cors());
+app.use(bodyParser.json());
 
 
-const MongoClient = require('mongodb').MongoClient;
-MongoClient.Promise = global.Promise   
-const uri = "mongodb+srv://test123:<qwerty66>@cluster0-ywbpt.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+// app.use('/posts', () => {
+//     console.log('this is a middleware running');
+// })
+
+//IMPORT ROUTES
+
+//app.use('/posts', postsRoute)
+
+//connect to DB
+mongoose.connect('mongodb+srv://test123:qwerty66@cluster0-ywbpt.mongodb.net/test?retryWrites=true&w=majority',
+{ useNewUrlParser: true },
+  () => console.log('connected to DB!')
+);
 
 
-// mongoose.set('debug', true);
-// mongoose.Promise = global.Promise
-// mongoose.connect(config.database, { useMongoClient: true },()=>
-// {
-//     console.log('connected to db')
-// });
+//How do we start listening to the server
 
 
 app.use(function (req, res, next) {
@@ -51,5 +80,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-//listen to server
-//app.listen(3000);
+app.listen(config.port, () => {
+    console.log(`Starting the server at port ${config.port}`);
+});
+// app.use('/post',pos)
+    
+router(app);

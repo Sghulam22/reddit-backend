@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 
 
 var PostSchema = new mongoose.Schema({
-    link:{type: String, required:true},
     post_id:{type: Number, required:true, unique:true},
     date:{type:Date,default:Date.now},
     name:String,
@@ -14,7 +13,6 @@ var PostSchema = new mongoose.Schema({
 
 PostSchema.methods.toJson = function () {
     return {
-        link:this.link,
         post_id:this.post_id,
         name:this.name,
         author:this.author,
@@ -24,5 +22,6 @@ PostSchema.methods.toJson = function () {
         date:this.date,
     }
     };
-
-    module.exports = mongoose.model('post', PostSchema);
+    // var new_post = mongoose.model("post", PostSchema);
+    // module.exports = mongoose.model('post', PostSchema);
+    module.exports.PostSchema=PostSchema;
