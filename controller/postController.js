@@ -1,4 +1,3 @@
-//import { request } from '../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/express';
 
 var post = require('../connections/post');
 var mongoose = require('mongoose');

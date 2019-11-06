@@ -1,6 +1,6 @@
-const userController = require('./controller/user');
-const postController = require('./controller/post');
-const commentController = require('./controller/comments');
+const userController = require('./controller/userController');
+const postController = require('./controller/postController');
+const commentController = require('./controller/commentController');
 const express = require('express');
 
 module.exports = function (app) {
